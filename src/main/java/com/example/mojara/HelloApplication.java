@@ -291,10 +291,30 @@ public class HelloApplication extends Application {
         vbox2.setSpacing(35);
         vbox2.getChildren().addAll(btnCaja,btnMesas,btnDescu,btnReservacion);
 
-        btnComentarios = new Button("Comentarios");
-        btnPedido = new Button("Pedidos");
-        btnSuge = new Button("Sugerencia");
-        btnHecho = new Button("Hecho con");
+        Image imgde11 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\coment.jpg");
+        ImageView imvde11 = new ImageView(imgde11);
+        imvde11.setFitWidth(150);
+        imvde11.setFitHeight(150);
+        imvde11.setPreserveRatio(false);
+        btnComentarios = new Button();
+        btnComentarios.setGraphic(imvde11);
+
+        Image imgde12 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pedi.png");
+        ImageView imvde12 = new ImageView(imgde12);
+        imvde12.setFitWidth(150);
+        imvde12.setFitHeight(150);
+        imvde12.setPreserveRatio(false);
+        btnPedido = new Button();
+        btnPedido.setGraphic(imvde12);
+
+        Image imgde13 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\hecho.jpg");
+        ImageView imvde13 = new ImageView(imgde13);
+        imvde13.setFitWidth(150);
+        imvde13.setFitHeight(150);
+        imvde13.setPreserveRatio(false);
+        btnHecho = new Button();
+        btnHecho.setGraphic(imvde13);
+
 
         btnComentarios.setPrefWidth(150);
         btnComentarios.setPrefHeight(150);
@@ -310,8 +330,6 @@ public class HelloApplication extends Application {
             PantallaPedido();
         });
 
-        btnSuge.setPrefWidth(150);
-        btnSuge.setPrefHeight(150);
 
         btnHecho.setPrefWidth(150);
         btnHecho.setPrefHeight(150);
@@ -322,12 +340,31 @@ public class HelloApplication extends Application {
 
         vbox3 = new VBox();
         vbox3.setSpacing(35);
-        vbox3.getChildren().addAll(btnComentarios,btnPedido,btnSuge,btnHecho);
+        vbox3.getChildren().addAll(btnComentarios,btnPedido,btnHecho);
 
+        Image imgde22 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\emple.jpg");
+        ImageView imvde22 = new ImageView(imgde22);
+        imvde22.setFitWidth(150);
+        imvde22.setFitHeight(150);
+        imvde22.setPreserveRatio(false);
+        btnEmpleados = new Button();
+        btnEmpleados.setGraphic(imvde22);
 
-        btnEmpleados = new Button("Empleados");
-        btnIngre = new Button("Ingredientes");
-        btnPago = new Button("Pago");
+        Image imgde23 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\ingr.jpg");
+        ImageView imvde23 = new ImageView(imgde23);
+        imvde23.setFitWidth(150);
+        imvde23.setFitHeight(150);
+        imvde23.setPreserveRatio(false);
+        btnIngre = new Button();
+        btnIngre.setGraphic(imvde23);
+
+        Image imgde24 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pago.jpg");
+        ImageView imvde24 = new ImageView(imgde24);
+        imvde24.setFitWidth(150);
+        imvde24.setFitHeight(150);
+        imvde24.setPreserveRatio(false);
+        btnPago = new Button();
+        btnPago.setGraphic(imvde24);
 
         btnEmpleados.setPrefWidth(150);
         btnEmpleados.setPrefHeight(150);
@@ -338,9 +375,29 @@ public class HelloApplication extends Application {
                 MenuEmpleado = new Stage();
                 hboxEmpleado = new HBox();
 
-                btnChef = new Button("Chef");
-                btnRepartidor = new Button("Repartidor");
-                btnPinche = new Button("Pinche");
+                Image imgde = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\chef.png");
+                ImageView imvde = new ImageView(imgde);
+                imvde.setFitWidth(150);
+                imvde.setFitHeight(150);
+                imvde.setPreserveRatio(false);
+                btnChef = new Button();
+                btnChef.setGraphic(imvde);
+
+                Image imgde01 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\repa.png");
+                ImageView imvde01 = new ImageView(imgde01);
+                imvde01.setFitWidth(150);
+                imvde01.setFitHeight(150);
+                imvde01.setPreserveRatio(false);
+                btnRepartidor = new Button();
+                btnRepartidor.setGraphic(imvde01);
+
+                Image imgde02 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pin.jpg");
+                ImageView imvde02 = new ImageView(imgde02);
+                imvde02.setFitWidth(150);
+                imvde02.setFitHeight(150);
+                imvde02.setPreserveRatio(false);
+                btnPinche = new Button();
+                btnPinche.setGraphic(imvde02);
 
                 btnChef.setPrefHeight(200);
                 btnChef.setPrefWidth(200);
@@ -826,7 +883,13 @@ public class HelloApplication extends Application {
         HBox hboxped1 = new HBox();
         HBox hboxpedido = new HBox(hboxped1);
 
-        btnordenar = new Button("ordenar");
+        Image imgde = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\or.png");
+        ImageView imvde = new ImageView(imgde);
+        imvde.setFitWidth(200);
+        imvde.setFitHeight(200);
+        imvde.setPreserveRatio(false);
+        btnordenar = new Button();
+        btnordenar.setGraphic(imvde);
 
         // Configuración de los nuevos botones
         btnordenar.setPrefWidth(200);
@@ -964,8 +1027,13 @@ public class HelloApplication extends Application {
         HBox hboxhecho1 = new HBox();
         HBox hboxhecho = new HBox(hboxhecho1);
 
-
-        btnhechocon = new Button("ver");
+        Image imgde = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\ver.png");
+        ImageView imvde = new ImageView(imgde);
+        imvde.setFitWidth(200);
+        imvde.setFitHeight(200);
+        imvde.setPreserveRatio(false);
+        btnhechocon = new Button();
+        btnhechocon.setGraphic(imvde);
 
         // Configuración de los nuevos botones
         btnhechocon.setPrefWidth(200);
@@ -1093,7 +1161,7 @@ public class HelloApplication extends Application {
         imvnu3.setFitHeight(200);
         imvnu3.setPreserveRatio(false);
         btnreser6 = new Button();
-        btnreser6.setGraphic(imvnu);
+        btnreser6.setGraphic(imvnu3);
         btnreser6.setStyle("-fx-background-color: transparent;");
 
         // Configuración de los nuevos botones
