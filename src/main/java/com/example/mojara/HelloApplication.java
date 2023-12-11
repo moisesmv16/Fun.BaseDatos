@@ -106,7 +106,7 @@ public class HelloApplication extends Application {
     }
 
     private void MenuPrincipalMojara() {
-        //restaurateDAO = new RestaurateDAO();
+        restaurateDAO = new RestaurateDAO();
         //tvbRestaurante = new TableView<>();
         //CrearTabla();
         MenuPrincipal = new Stage();
@@ -122,15 +122,6 @@ public class HelloApplication extends Application {
         btnPlatillos.setGraphic(imvpla);
         btnPlatillos.setStyle("-fx-background-color: transparent;");
 
-        Image imgbebi = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\beb.png");
-        ImageView imvbeb = new ImageView(imgbebi);
-        imvbeb.setFitWidth(150);
-        imvbeb.setFitHeight(150);
-        imvbeb.setPreserveRatio(false);
-        btnBebidas = new Button();
-        btnBebidas.setGraphic(imvbeb);
-        btnBebidas.setStyle("-fx-background-color: transparent;");
-
         Image imgpromo = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pro.jpg");
         ImageView imvpromo = new ImageView(imgpromo);
         imvpromo.setFitWidth(150);
@@ -140,16 +131,31 @@ public class HelloApplication extends Application {
         btnPromo.setGraphic(imvpromo);
         btnPromo.setStyle("-fx-background-color: transparent;");
 
+        Image imgre = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\re.png");
+        ImageView imvre = new ImageView(imgre);
+        imvre.setFitWidth(150);
+        imvre.setFitHeight(150);
+        imvre.setPreserveRatio(false);
+        btnReservacion = new Button();
+        btnReservacion.setGraphic(imvre);
+
+
 
         btnPlatillos.setPrefWidth(150);
         btnPlatillos.setPrefHeight(150);
 
-        btnBebidas.setPrefWidth(150);
-        btnBebidas.setPrefHeight(150);
-
         btnPromo.setPrefWidth(150);
         btnPromo.setPrefHeight(150);
+
+
+        btnReservacion.setPrefWidth(150);
+        btnReservacion.setPrefHeight(150);
+
         btnPromo.setOnAction(event -> PantallaPromo());
+        btnReservacion.setOnAction(event -> {
+            PantallaReserva();
+        });
+
 
         btnPlatillos.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -158,24 +164,23 @@ public class HelloApplication extends Application {
                 vboxcategorias = new VBox();
                 hboxcategorias = new HBox(vboxcategorias);
 
-                Image imgha = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\hapla.jpg");
+                Image imgha = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\hapla.png");
                 ImageView imvha = new ImageView(imgha);
                 imvha.setFitWidth(200);
                 imvha.setFitHeight(200);
                 imvha.setPreserveRatio(false);
                 btnHamburguesas = new Button();
                 btnHamburguesas.setGraphic(imvha);
-                btnHamburguesas.setStyle("-fx-background-color: transparent;");
 
 
-                Image imgbebi = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\beb.jpg");
+
+                Image imgbebi = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\beb.png");
                 ImageView imvbeb = new ImageView(imgbebi);
                 imvbeb.setFitWidth(200);
                 imvbeb.setFitHeight(200);
                 imvbeb.setPreserveRatio(false);
                 btnBebidas = new Button();
                 btnBebidas.setGraphic(imvbeb);
-                btnBebidas.setStyle("-fx-background-color: transparent;");
 
 
                 Image imgac = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\acompa.jpg");
@@ -185,7 +190,6 @@ public class HelloApplication extends Application {
                 imvac.setPreserveRatio(false);
                 btnAcompañante = new Button();
                 btnAcompañante.setGraphic(imvac);
-                btnAcompañante.setStyle("-fx-background-color: transparent;");
 
                 // Configuración de los nuevos botones
                 btnHamburguesas.setPrefWidth(200);
@@ -224,7 +228,7 @@ public class HelloApplication extends Application {
 
         vbox1 = new VBox();
         vbox1.setSpacing(35);
-        vbox1.getChildren().addAll(btnPlatillos,btnBebidas,btnPromo);
+        vbox1.getChildren().addAll(btnPlatillos,btnPromo,btnReservacion);
 
         Image imgca = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\caja.png");
         ImageView imvca = new ImageView(imgca);
@@ -252,13 +256,6 @@ public class HelloApplication extends Application {
         btnDescu = new Button();
         btnDescu.setGraphic(imvde);
 
-        Image imgre = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\re.png");
-        ImageView imvre = new ImageView(imgre);
-        imvre.setFitWidth(150);
-        imvre.setFitHeight(150);
-        imvre.setPreserveRatio(false);
-        btnReservacion = new Button();
-        btnReservacion.setGraphic(imvre);
 
         btnCaja.setPrefWidth(150);
         btnCaja.setPrefHeight(150);
@@ -270,9 +267,6 @@ public class HelloApplication extends Application {
         btnDescu.setPrefWidth(150);
         btnDescu.setPrefHeight(150);
 
-        btnReservacion.setPrefWidth(150);
-        btnReservacion.setPrefHeight(150);
-
         btnCaja.setOnAction(event -> {
             PantallaCaja();
         });
@@ -283,13 +277,10 @@ public class HelloApplication extends Application {
             PantallaDescuentos();
         });
 
-        btnReservacion.setOnAction(event -> {
-            PantallaReserva();
-        });
 
         vbox2 = new VBox();
         vbox2.setSpacing(35);
-        vbox2.getChildren().addAll(btnCaja,btnMesas,btnDescu,btnReservacion);
+        vbox2.getChildren().addAll(btnCaja,btnMesas,btnDescu);
 
         Image imgde11 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\coment.jpg");
         ImageView imvde11 = new ImageView(imgde11);
@@ -465,7 +456,6 @@ public class HelloApplication extends Application {
         imvse.setPreserveRatio(false);
         btnsencilla = new Button();
         btnsencilla.setGraphic(imvse);
-        btnsencilla.setStyle("-fx-background-color: transparent;");
 
         Image imgdo = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\hamdoble.jpg");
         ImageView imvdo = new ImageView(imgdo);
@@ -474,7 +464,6 @@ public class HelloApplication extends Application {
         imvdo.setPreserveRatio(false);
         btndoble = new Button();
         btndoble.setGraphic(imvdo);
-        btndoble.setStyle("-fx-background-color: transparent;");
 
         Image imgha = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\hamwa.jpg");
         ImageView imvha = new ImageView(imgha);
@@ -483,7 +472,7 @@ public class HelloApplication extends Application {
         imvha.setPreserveRatio(false);
         btnhawaiana = new Button();
         btnhawaiana.setGraphic(imvha);
-        btnhawaiana.setStyle("-fx-background-color: transparent;");
+
 
 
         // Configuración de los nuevos botones

@@ -84,7 +84,6 @@ public class RestaurateDAO {
             PreparedStatement pstmtCategoria = Conexion.conexion.prepareStatement(insertCategoriaQuery, Statement.RETURN_GENERATED_KEYS);
             pstmtCategoria.setString(1, nombreCategoria);
             pstmtCategoria.executeUpdate();
-
             // Obtener el idCategoria de la categoría recién creada
             ResultSet id = pstmtCategoria.getGeneratedKeys();
             if (id.next()) {
