@@ -6,4 +6,5 @@ module com.example.mojara {
 
     opens com.example.mojara to javafx.fxml;
     exports com.example.mojara;
+    opens modelos;
 }

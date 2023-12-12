@@ -44,7 +44,7 @@ public class HelloApplication extends Application {
     private Button btn5,btn10,btn15,btnhechocon;
     private Button btnverCaja,btnefec,btntarjeta;
     private Button btnReser2,btnReser4,btnreser6,btnActu;
-    private VBox vbox1,vbox2,vbox3,vbox4,vboxcategorias,vboxPlatillos1;
+    private VBox vbox1,vbox2,vbox3,vbox4,vbox5,vboxcategorias,vboxPlatillos1;
 
     private HBox hboxPrincipal,hboxcategorias,hboxLogin,hboxLoginusu;
     private HBox hboxEmpleado,hboxEmpleado1;
@@ -90,10 +90,12 @@ public class HelloApplication extends Application {
 
         btnMujer.setOnAction(event -> {
             MenuPrincipalMojara();
+            AlertaMujer();
         });
 
         btnHombre.setOnAction(event -> {
             MenuPrincipalMojara();
+            AlertaHombre();
         });
 
         hboxLoginusu.getChildren().setAll(btnHombre, new Separator(), btnMujer);
@@ -106,9 +108,9 @@ public class HelloApplication extends Application {
     }
 
     private void MenuPrincipalMojara() {
-        restaurateDAO = new RestaurateDAO();
-        //tvbRestaurante = new TableView<>();
-        //CrearTabla();
+        /*restaurateDAO = new RestaurateDAO();
+        tvbRestaurante = new TableView<RestaurateDAO>();
+        CrearTabla();*/
         MenuPrincipal = new Stage();
         hboxPrincipal = new HBox();
         //btnDetallePedido = new Button("DetallePedido");
@@ -120,7 +122,6 @@ public class HelloApplication extends Application {
         imvpla.setPreserveRatio(false);
         btnPlatillos = new Button();
         btnPlatillos.setGraphic(imvpla);
-        btnPlatillos.setStyle("-fx-background-color: transparent;");
 
         Image imgpromo = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pro.jpg");
         ImageView imvpromo = new ImageView(imgpromo);
@@ -129,7 +130,6 @@ public class HelloApplication extends Application {
         imvpromo.setPreserveRatio(false);
         btnPromo = new Button();
         btnPromo.setGraphic(imvpromo);
-        btnPromo.setStyle("-fx-background-color: transparent;");
 
         Image imgre = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\re.png");
         ImageView imvre = new ImageView(imgre);
@@ -171,7 +171,6 @@ public class HelloApplication extends Application {
                 imvha.setPreserveRatio(false);
                 btnHamburguesas = new Button();
                 btnHamburguesas.setGraphic(imvha);
-
 
 
                 Image imgbebi = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\beb.png");
@@ -401,14 +400,17 @@ public class HelloApplication extends Application {
 
                 btnChef.setOnAction(event ->{
                     Asignarchef();
+                    AlertaChef();
                 });
 
                 btnRepartidor.setOnAction(event ->{
                     AsignarRepa();
+                    AlertaRepa();
                 });
 
                 btnPinche.setOnAction(event ->{
                     Asignarpinche();
+                    AlertaPinche();
                 });
 
                 hboxEmpleado.getChildren().addAll(btnChef,btnRepartidor,btnPinche);
@@ -437,7 +439,29 @@ public class HelloApplication extends Application {
         vbox4.setSpacing(35);
         vbox4.getChildren().addAll(btnEmpleados,btnIngre,btnPago);
 
-        hboxPrincipal = new HBox(vbox1,new Separator(),vbox2,new Separator(),vbox3,new Separator(),vbox4);
+        restaurateDAO = new RestaurateDAO();
+        tvbRestaurante = new TableView<RestaurateDAO>();
+        CrearTabla();
+
+        Image imgdp = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\car.png");
+        ImageView imvdp = new ImageView(imgdp);
+        imvdp.setFitWidth(150);
+        imvdp.setFitHeight(150);
+        imvdp.setPreserveRatio(false);
+        btnDetallePedido = new Button();
+        btnDetallePedido.setGraphic(imvdp);
+
+        btnDetallePedido.setPrefWidth(150);
+        btnDetallePedido.setPrefHeight(150);
+        btnDetallePedido.setOnAction(event -> {
+            TablaPedido();
+        });
+        vbox5 = new VBox();
+        vbox5.setSpacing(35);
+        vbox5.getChildren().addAll(btnDetallePedido);
+
+
+        hboxPrincipal = new HBox(vbox1,new Separator(),vbox2,new Separator(),vbox3,new Separator(),vbox4,new Separator(),vbox5);
         Scene segundaEscena = new Scene(hboxPrincipal, 200, 150);
         MenuPrincipal.setScene(segundaEscena);
         MenuPrincipal.setTitle("Menu Principal");
@@ -487,14 +511,17 @@ public class HelloApplication extends Application {
 
         btnsencilla.setOnAction(event -> {
             AsignarSencilla();
+            AlertaSencilla();
         });
 
         btndoble.setOnAction(event -> {
             AsignarDoble();
+            AlertaDoble();
         });
 
         btnhawaiana.setOnAction(event -> {
             AsignarHawa();
+            AlertaHawa();
         });
         // Agregar los nuevos botones al contenedor
         vboxhamburguesas.getChildren().addAll(btnsencilla, btndoble, btnhawaiana);
@@ -518,8 +545,7 @@ public class HelloApplication extends Application {
         imvre.setPreserveRatio(false);
         btnRefresco = new Button();
         btnRefresco.setGraphic(imvre);
-        btnRefresco.setStyle("-fx-background-color: transparent;");
-        btnRefresco = new Button("Coca Cola");
+
 
         Image imgag = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\agua.jpg");
         ImageView imvag = new ImageView(imgag);
@@ -528,7 +554,6 @@ public class HelloApplication extends Application {
         imvag.setPreserveRatio(false);
         btnAgua = new Button();
         btnAgua.setGraphic(imvag);
-        btnAgua.setStyle("-fx-background-color: transparent;");
 
         Image imgte = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\te.jpg");
         ImageView imvte = new ImageView(imgte);
@@ -537,7 +562,6 @@ public class HelloApplication extends Application {
         imvte.setPreserveRatio(false);
         btnTeHelado = new Button();
         btnTeHelado.setGraphic(imvag);
-        btnTeHelado.setStyle("-fx-background-color: transparent;");
 
         // Configuración de los nuevos botones
         btnRefresco.setPrefWidth(200);
@@ -551,14 +575,17 @@ public class HelloApplication extends Application {
 
         btnRefresco.setOnAction(event -> {
             Asignarcoca();
+            AlertaCoca();
         });
 
         btnAgua.setOnAction(event -> {
             Asignaragua();
+            AlertaAgua();
         });
 
         btnTeHelado.setOnAction(event ->{
             Asignarte();
+            AlertaTe();
         });
         // Agregar los nuevos botones al contenedor
         vboxbebidas.getChildren().addAll(btnRefresco, btnAgua, btnTeHelado);
@@ -582,7 +609,6 @@ public class HelloApplication extends Application {
         imvag.setPreserveRatio(false);
         btnPapas = new Button();
         btnPapas.setGraphic(imvag);
-        btnPapas.setStyle("-fx-background-color: transparent;");
 
         Image imga = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\ali.jpg");
         ImageView imva = new ImageView(imga);
@@ -591,7 +617,6 @@ public class HelloApplication extends Application {
         imva.setPreserveRatio(false);
         btnAlitas = new Button();
         btnAlitas.setGraphic(imva);
-        btnAlitas.setStyle("-fx-background-color: transparent;");
 
         Image imgagl = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\nug.jpg");
         ImageView imvagl = new ImageView(imgagl);
@@ -600,7 +625,6 @@ public class HelloApplication extends Application {
         imvagl.setPreserveRatio(false);
         btnNuget = new Button();
         btnNuget.setGraphic(imvagl);
-        btnNuget.setStyle("-fx-background-color: transparent;");
         // Configuración de los nuevos botones
         btnPapas.setPrefWidth(200);
         btnPapas.setPrefHeight(200);
@@ -613,14 +637,17 @@ public class HelloApplication extends Application {
 
         btnPapas.setOnAction(event -> {
             Asignarpapas();
+            AlertaPapas();
         });
 
         btnAlitas.setOnAction(event -> {
             Asignaralitas();
+            AlertaAlitas();
         });
 
         btnNuget.setOnAction(event ->{
             Asignarnuget();
+            AlertaNuget();
         });
         // Agregar los nuevos botones al contenedor
         vboxacompa.getChildren().addAll(btnPapas, btnAlitas, btnNuget);
@@ -645,7 +672,6 @@ public class HelloApplication extends Application {
         imvca.setPreserveRatio(false);
         btnCarne = new Button();
         btnCarne.setGraphic(imvca);
-        btnCarne.setStyle("-fx-background-color: transparent;");
 
         Image imgpan = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pan.jpg");
         ImageView imvpan = new ImageView(imgpan);
@@ -654,7 +680,6 @@ public class HelloApplication extends Application {
         imvpan.setPreserveRatio(false);
         btnPan = new Button();
         btnPan.setGraphic(imvpan);
-        btnPan.setStyle("-fx-background-color: transparent;");
 
         Image imgag = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\jit.jpg");
         ImageView imvag = new ImageView(imgag);
@@ -663,7 +688,7 @@ public class HelloApplication extends Application {
         imvag.setPreserveRatio(false);
         btnTomate = new Button();
         btnTomate.setGraphic(imvag);
-        btnTomate.setStyle("-fx-background-color: transparent;");
+
         // Configuración de los nuevos botones
         btnCarne.setPrefWidth(200);
         btnCarne.setPrefHeight(200);
@@ -676,14 +701,17 @@ public class HelloApplication extends Application {
 
         btnCarne.setOnAction(event -> {
             AsignarCarne();
+            AlertaCarne();
         });
 
         btnPan.setOnAction(event -> {
             AsignarPan();
+            AlertaPan();
         });
 
         btnTomate.setOnAction(event ->{
             AsignarToma();
+            AlertaTomate();
         });
         vboxingre.getChildren().addAll(btnCarne, btnPan, btnTomate);
 
@@ -694,7 +722,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnNu = new Button();
         btnNu.setGraphic(imvag);
-        btnNu.setStyle("-fx-background-color: transparent;");
+
 
         Image imgali = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\al.jpg");
         ImageView imvali = new ImageView(imgali);
@@ -703,7 +731,7 @@ public class HelloApplication extends Application {
         imvali.setPreserveRatio(false);
         btnAli = new Button();
         btnAli.setGraphic(imvag);
-        btnAli.setStyle("-fx-background-color: transparent;");
+
 
         Image imgpa = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\pap.jpg");
         ImageView imvpa = new ImageView(imgpa);
@@ -712,7 +740,6 @@ public class HelloApplication extends Application {
         imvpa.setPreserveRatio(false);
         btnPapa = new Button();
         btnPapa.setGraphic(imvpa);
-        btnPapa.setStyle("-fx-background-color: transparent;");
 
         btnNu.setPrefWidth(200);
         btnNu.setPrefHeight(200);
@@ -725,14 +752,17 @@ public class HelloApplication extends Application {
 
         btnNu.setOnAction(event -> {
             Asignarnu();
+            AlertaNug();
         });
 
         btnAli.setOnAction(event ->{
             Asignarali();
+            AlertaAlita();
         });
 
         btnPapa.setOnAction(event ->{
             Asignarpapa();
+            AlertaPapa();
         });
         Scene PlatilloEscena = new Scene(hboxingre, 600, 400); // Ajusta el tamaño según tus necesidades
         MenuIngre.setScene(PlatilloEscena);
@@ -752,7 +782,7 @@ public class HelloApplication extends Application {
         imv2.setPreserveRatio(false);
         btnmesax2 = new Button();
         btnmesax2.setGraphic(imv2);
-        btnmesax2.setStyle("-fx-background-color: transparent;");
+
 
         Image img4 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\x4.jpg");
         ImageView imv4 = new ImageView(img4);
@@ -761,7 +791,6 @@ public class HelloApplication extends Application {
         imv4.setPreserveRatio(false);
         btnmesax4 = new Button();
         btnmesax4.setGraphic(imv4);
-        btnmesax4.setStyle("-fx-background-color: transparent;");
 
         Image img6 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\x6.jpg");
         ImageView imv6 = new ImageView(img6);
@@ -770,7 +799,6 @@ public class HelloApplication extends Application {
         imv6.setPreserveRatio(false);
         btnmesa6 = new Button();
         btnmesa6.setGraphic(imv6);
-        btnmesa6.setStyle("-fx-background-color: transparent;");
 
         // Configuración de los nuevos botones
         btnmesax2.setPrefWidth(200);
@@ -784,14 +812,17 @@ public class HelloApplication extends Application {
 
         btnmesax2.setOnAction(event -> {
             AsignarMesax2();
+            Alertax2();
         });
 
         btnmesax4.setOnAction(event -> {
             AsignarMesax4();
+            Alertax4();
         });
 
         btnmesa6.setOnAction(event ->{
             AsignarMesax6();
+            Alertax6();
         });
         // Agregar los nuevos botones al contenedor
         vboxMesa1.getChildren().addAll(btnmesax2, btnmesax4, btnmesa6);
@@ -815,7 +846,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnbts = new Button();
         btnbts.setGraphic(imvnu);
-        btnbts.setStyle("-fx-background-color: transparent;");
+
 
 
         Image imgnu1 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\estu.jpg");
@@ -825,7 +856,7 @@ public class HelloApplication extends Application {
         imvnu1.setPreserveRatio(false);
         btnestu = new Button();
         btnestu.setGraphic(imvnu1);
-        btnestu.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu2 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\2x1.jpg");
         ImageView imvnu2 = new ImageView(imgnu2);
@@ -834,7 +865,7 @@ public class HelloApplication extends Application {
         imvnu2.setPreserveRatio(false);
         btn2x1 = new Button();
         btn2x1.setGraphic(imvnu2);
-        btn2x1.setStyle("-fx-background-color: transparent;");
+
 
         // Configuración de los nuevos botones
         btnbts.setPrefWidth(200);
@@ -848,14 +879,17 @@ public class HelloApplication extends Application {
 
         btnbts.setOnAction(event -> {
             AsignarBTS();
+            AlertaBts();
         });
 
         btnestu.setOnAction(event -> {
             AsignarEstu();
+            AlertaEstu();
         });
 
         btn2x1.setOnAction(event ->{
             Asignar2x1();
+            Alerta2x1();
         });
         // Agregar los nuevos botones al contenedor
         hboxpromo1.getChildren().addAll(btnbts, btnestu, btn2x1);
@@ -909,7 +943,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnBueno = new Button();
         btnBueno.setGraphic(imvnu);
-        btnBueno.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu1 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\malo.jpg");
         ImageView imvnu1 = new ImageView(imgnu1);
@@ -918,7 +952,6 @@ public class HelloApplication extends Application {
         imvnu1.setPreserveRatio(false);
         btnMalo = new Button();
         btnMalo.setGraphic(imvnu1);
-        btnMalo.setStyle("-fx-background-color: transparent;");
 
 
         // Configuración de los nuevos botones
@@ -930,10 +963,12 @@ public class HelloApplication extends Application {
 
         btnBueno.setOnAction(event -> {
             AsignarcomeBueno();
+            AlertaBueno();
         });
 
         btnMalo.setOnAction(event -> {
             AsignarcomeMalo();
+            AlertaMalo();
         });
 
         hboxcome1.getChildren().addAll(btnBueno, btnMalo);
@@ -957,7 +992,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btn5 = new Button();
         btn5.setGraphic(imvnu);
-        btn5.setStyle("-fx-background-color: transparent;");
+
 
 
         Image imgnu2 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\-10.jpg");
@@ -967,7 +1002,7 @@ public class HelloApplication extends Application {
         imvnu2.setPreserveRatio(false);
         btn10 = new Button();
         btn10.setGraphic(imvnu2);
-        btn10.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu3 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\-15.jpg");
         ImageView imvnu3 = new ImageView(imgnu3);
@@ -976,7 +1011,6 @@ public class HelloApplication extends Application {
         imvnu3.setPreserveRatio(false);
         btn15 = new Button();
         btn15.setGraphic(imvnu3);
-        btn15.setStyle("-fx-background-color: transparent;");
 
         // Configuración de los nuevos botones
         btn5.setPrefWidth(200);
@@ -991,14 +1025,17 @@ public class HelloApplication extends Application {
 
         btn5.setOnAction(event -> {
             Asignar5();
+            Alertades5();
         });
 
         btn10.setOnAction(event ->{
             Asignar10();
+            Alertades10();
         });
 
         btn15.setOnAction(event -> {
             Asignar15();
+            Alertades15();
         });
 
         // Agregar los nuevos botones al contenedor
@@ -1053,7 +1090,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnverCaja = new Button();
         btnverCaja.setGraphic(imvnu);
-        btnverCaja.setStyle("-fx-background-color: transparent;");
+
 
 
         // Configuración de los nuevos botones
@@ -1086,7 +1123,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnefec  = new Button();
         btnefec.setGraphic(imvnu);
-        btnefec.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu2 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\tar.png");
         ImageView imvnu2 = new ImageView(imgnu2);
@@ -1095,7 +1132,6 @@ public class HelloApplication extends Application {
         imvnu2.setPreserveRatio(false);
         btntarjeta = new Button();
         btntarjeta.setGraphic(imvnu2);
-        btntarjeta.setStyle("-fx-background-color: transparent;");
 
         // Configuración de los nuevos botones
         btnefec.setPrefWidth(200);
@@ -1106,10 +1142,12 @@ public class HelloApplication extends Application {
 
         btnefec.setOnAction(event -> {
             AsigarPagoefec();
+            AlertaEfectivo();
         });
 
         btntarjeta.setOnAction(event -> {
             AsigarPagotar();
+            AlertaTarjeta();
         });
 
         hboxpago1.getChildren().addAll(btnefec,btntarjeta);
@@ -1133,7 +1171,7 @@ public class HelloApplication extends Application {
         imvnu.setPreserveRatio(false);
         btnReser2 = new Button();
         btnReser2.setGraphic(imvnu);
-        btnReser2.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu2 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\4.png");
         ImageView imvnu2 = new ImageView(imgnu2);
@@ -1142,7 +1180,7 @@ public class HelloApplication extends Application {
         imvnu2.setPreserveRatio(false);
         btnReser4 = new Button();
         btnReser4.setGraphic(imvnu2);
-        btnReser4.setStyle("-fx-background-color: transparent;");
+
 
         Image imgnu3 = new Image("C:\\Users\\Hp\\IdeaProjects\\Mojara\\src\\main\\java\\imagenes\\6.png");
         ImageView imvnu3 = new ImageView(imgnu3);
@@ -1151,7 +1189,7 @@ public class HelloApplication extends Application {
         imvnu3.setPreserveRatio(false);
         btnreser6 = new Button();
         btnreser6.setGraphic(imvnu3);
-        btnreser6.setStyle("-fx-background-color: transparent;");
+
 
         // Configuración de los nuevos botones
         btnReser2.setPrefWidth(200);
@@ -1165,14 +1203,17 @@ public class HelloApplication extends Application {
 
         btnReser2.setOnAction(event -> {
             AsignarReserva2();
+            AlertaReser2();
         });
 
         btnReser4.setOnAction(event -> {
             AsignarReserva4();
+            AlertaReser4();
         });
 
         btnreser6.setOnAction(event ->{
             AsignarReserva6();
+            AlertaReser6();
         });
 
         hboxreserva1.getChildren().addAll(btnReser2,btnReser4,btnreser6);
@@ -1214,32 +1255,308 @@ public class HelloApplication extends Application {
 
 
     private void CrearTabla(){
-        TableColumn<RestaurateDAO,Integer> tbcldCat = new TableColumn<>("ID platillo");
-        tbcldCat.setCellValueFactory(new PropertyValueFactory<>("IDplatillo"));
-
+        /*TableColumn<RestaurateDAO,Integer> tbcldCat = new TableColumn<>("ID platillo");
+        tbcldCat.setCellValueFactory(new PropertyValueFactory<>("IDplatillo"));*/
         TableColumn<RestaurateDAO,String> tbcldCat2 = new TableColumn<>("Nombre");
         tbcldCat2.setCellValueFactory(new PropertyValueFactory<>("nombrePlatillo"));
-        tbcldCat2.setEditable(true);
         tbcldCat2.setPrefWidth(200);
 
         TableColumn<RestaurateDAO,String> borrar = new TableColumn<>("Borrar");
         borrar.setCellFactory(
                 new Callback<TableColumn<RestaurateDAO, String>, TableCell<RestaurateDAO, String>>() {
                     @Override
-                    public TableCell<RestaurateDAO, String> call(TableColumn<RestaurateDAO, String> taqueriasDAOStringTableColumn) {
+                    public TableCell<RestaurateDAO, String> call(TableColumn<RestaurateDAO, String> RestaurateDAOStringTableColumn) {
                         return new ButtonCell(2);
                     }
                 }
         );
 
 
-        tvbRestaurante.getColumns().addAll(tbcldCat,tbcldCat2,borrar);
-        tvbRestaurante.setItems(restaurateDAO.LISTARPRODUCTOS());
+        tvbRestaurante.getColumns().addAll(tbcldCat2,borrar);
+        tvbRestaurante.setItems(restaurateDAO.LISTARPlatillo());
     }
 
     private void actualizarTabla() {
-        tvbRestaurante.getItems().setAll(restaurateDAO.LISTARPRODUCTOS());
+        tvbRestaurante.getItems().setAll(restaurateDAO.LISTARPlatillo());
     }
+
+    private void AlertaHombre(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Bienvenido");
+        alert.setHeaderText(null);
+        alert.setContentText("Bienvenido a Bayleys Caballero");
+
+        alert.showAndWait();
+    }
+
+    private void AlertaMujer(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Bienvenido");
+        alert.setHeaderText(null);
+        alert.setContentText("Bienvenido a Bayleys Dama");
+
+        alert.showAndWait();
+    }
+
+    private void AlertaChef(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Chef");
+        alert.setHeaderText(null);
+        alert.setContentText("El chef tiene 10 años de practica en el area de comida" +
+                "rapida, asi que confia en el.");
+
+        alert.showAndWait();
+    }
+
+    private void AlertaRepa(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Repartidor");
+        alert.setHeaderText(null);
+        alert.setContentText("El repartidor es el mas rapido de celaya si" +
+                "no llega en 30 minutos su comida es gratis.");
+
+        alert.showAndWait();
+    }
+
+    private void AlertaPinche(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Ayudante de cocina");
+        alert.setHeaderText(null);
+        alert.setContentText("El ayudante de cocina es una persona muy capaz" +
+                "que tiene gran experiencia.");
+
+        alert.showAndWait();
+    }
+
+    private void AlertaSencilla(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hamburguesa Sencilla.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una hamburguesa sencilla.");
+        alert.showAndWait();
+    }
+    private void AlertaDoble(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hamburguesa Doble.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una hamburguesa doble.");
+        alert.showAndWait();
+    }
+    private void AlertaHawa(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Hamburguesa Hawaiana.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una hamburguesa Hawaiana.");
+        alert.showAndWait();
+    }
+
+    private void AlertaCoca(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Coca-cola.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una Coca-cola de 600ml.");
+        alert.showAndWait();
+    }
+
+    private void AlertaAgua(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Agua.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una Agua de 600ml.");
+        alert.showAndWait();
+    }
+
+    private void AlertaTe(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Te Helado.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono un Te de 600ml.");
+        alert.showAndWait();
+    }
+
+    private void AlertaPapas(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Papas Fritas.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una orden de Papas Fritas.");
+        alert.showAndWait();
+    }
+
+    private void AlertaAlitas(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Alitas Picantes.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una orden de Alitas Picantes.");
+        alert.showAndWait();
+    }
+
+    private void AlertaNuget(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Nuget.");
+        alert.setHeaderText(null);
+        alert.setContentText("Selecciono una orden de Nugets.");
+        alert.showAndWait();
+    }
+
+    private void AlertaCarne(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Carne.");
+        alert.setHeaderText(null);
+        alert.setContentText("La carne de hamburguesa es de la mas alta calidad.");
+        alert.showAndWait();
+    }
+    private void AlertaPan(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Pan.");
+        alert.setHeaderText(null);
+        alert.setContentText("El pan de hamburguesa es de la mas alta calidad.");
+        alert.showAndWait();
+    }
+    private void AlertaTomate(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Jitomate.");
+        alert.setHeaderText(null);
+        alert.setContentText("El jitomate es de la mas alta calidad.");
+        alert.showAndWait();
+    }
+    private void AlertaAlita(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Alita.");
+        alert.setHeaderText(null);
+        alert.setContentText("Alita es freca, de la empresa bachoco.");
+        alert.showAndWait();
+    }
+    private void AlertaPapa(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Papa.");
+        alert.setHeaderText(null);
+        alert.setContentText("La papa es fresca de la mas alta calidad.");
+        alert.showAndWait();
+    }
+    private void AlertaNug(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Nuget.");
+        alert.setHeaderText(null);
+        alert.setContentText("Nuget fresco, de la empresa bachoco.");
+        alert.showAndWait();
+    }
+
+    private void Alertax2(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reserva mesa para 2.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha hecho su reserva para 2 personas.");
+        alert.showAndWait();
+    }
+    private void Alertax4(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reserva mesa para 4.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha hecho su reserva para 4 personas.");
+        alert.showAndWait();
+    }
+    private void Alertax6(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reserva mesa para 6.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha hecho su reserva para 6 personas.");
+        alert.showAndWait();
+    }
+    private void AlertaBts(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Combo BTS.");
+        alert.setHeaderText(null);
+        alert.setContentText("Proximamente disponible este producto.");
+        alert.showAndWait();
+    }
+    private void AlertaEstu(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Combo Estudiantil.");
+        alert.setHeaderText(null);
+        alert.setContentText("Presenta tu credencial en ventanilla y llevate una sorpresa.");
+        alert.showAndWait();
+    }
+    private void Alerta2x1(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Combo 2 x 1.");
+        alert.setHeaderText(null);
+        alert.setContentText("Disponible hasta 2024....");
+        alert.showAndWait();
+    }
+
+    private void AlertaBueno(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Comentario Bueno.");
+        alert.setHeaderText(null);
+        alert.setContentText("Gracias por tu comentario bueno.");
+        alert.showAndWait();
+    }
+    private void AlertaMalo(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Comentario Malo.");
+        alert.setHeaderText(null);
+        alert.setContentText("Gracias por tu comentario :( ");
+        alert.showAndWait();
+    }
+
+    private void Alertades5(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Descuento del 5%.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha seleccionado el descuento del 5%.");
+        alert.showAndWait();
+    }
+    private void Alertades10(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Descuento del 10%.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha seleccionado el descuento del 10%.");
+        alert.showAndWait();
+    }
+    private void Alertades15(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Descuento del 15%.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha seleccionado el descuento del 15%.");
+        alert.showAndWait();
+    }
+    private void AlertaEfectivo(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Pago Tarjeta.");
+        alert.setHeaderText(null);
+        alert.setContentText("Pase a ventanilla a pagar.");
+        alert.showAndWait();
+    }
+    private void AlertaTarjeta(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Descuento del 15%.");
+        alert.setHeaderText(null);
+        alert.setContentText("Pase a ventanilla a pagar.");
+        alert.showAndWait();
+    }
+    private void AlertaReser2(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reservaciones.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha solicitado su reservacion para 2 personas.");
+        alert.showAndWait();
+    }
+    private void AlertaReser4(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reservaciones.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha solicitado su reservacion para 4 personas");
+        alert.showAndWait();
+    }
+    private void AlertaReser6(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reservaciones.");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha solicitado su reservacion para 6 personas.");
+        alert.showAndWait();
+    }
+
+
 
     private int idCategoria=-1;
     private int IDplatillo=-1;

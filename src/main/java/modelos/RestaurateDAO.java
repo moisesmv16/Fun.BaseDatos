@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class RestaurateDAO {
@@ -18,6 +19,16 @@ public class RestaurateDAO {
     private int IDempleado;
     private String nombreEmpleado;
     private String cargo;
+
+    public String getNombrePlatillo() {
+        return nombrePlatillo;
+    }
+
+    public void setNombrePlatillo(String nombrePlatillo) {
+        this.nombrePlatillo = nombrePlatillo;
+    }
+
+    private String nombrePlatillo;
 
     public int getIDempleado() {
         return IDempleado;
@@ -51,15 +62,7 @@ public class RestaurateDAO {
         this.IDplatillo = IDplatillo;
     }
 
-    public String getNombreplatillo() {
-        return nombreplatillo;
-    }
 
-    public void setNombreplatillo(String nombreplatillo) {
-        this.nombreplatillo = nombreplatillo;
-    }
-
-    private String nombreplatillo;
     public int getIdCategoria() {
         return idCategoria;
     }
@@ -357,86 +360,22 @@ public class RestaurateDAO {
         return IDreserva;
     }
 
-    /*public int insertarUsuario(String nombreUsuario) {
-        int idPedido = -1;
-        try {
-            // Insertar una nueva categoría
-            String insertCategoriaQuery = "INSERT INTO Pedido (cliente) VALUES (?)";
-            PreparedStatement pstmtCategoria = Conexion.conexion.prepareStatement(insertCategoriaQuery, Statement.RETURN_GENERATED_KEYS);
-            pstmtCategoria.setString(1, nombreUsuario);
-            pstmtCategoria.executeUpdate();
-            // Obtener el idCategoria de la categoría recién creada
-            ResultSet id = pstmtCategoria.getGeneratedKeys();
-            if (id.next()) {
-                idPedido = id.getInt(1);
+    public ObservableList<RestaurateDAO> LISTARPlatillo() {
+        ObservableList<RestaurateDAO> ListPLA = FXCollections.observableArrayList();
+
+        try (PreparedStatement pstmt = Conexion.conexion.prepareStatement("SELECT * FROM platillo");
+             ResultSet res = pstmt.executeQuery()) {
+
+            while (res.next()) {
+                RestaurateDAO objC = new RestaurateDAO();
+                objC.setNombrePlatillo(res.getString("nombre"));
+                ListPLA.add(objC);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return idPedido;
-    }*/
 
-
-
-
-    /*public void insertarCompra(int idPlatillo, int idPedido, int Precio, int Total, int Cantidad) {
-        try {
-            // Insertar una nueva compra asignándole la categoría y el pedido
-            String insertCompraQuery = "INSERT INTO DetallePedido (idPlatillo, idPedido, Precio, Total, Cantidad) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement pstmtCompra = Conexion.conexion.prepareStatement(insertCompraQuery);
-            pstmtCompra.setInt(1, idPlatillo);
-            pstmtCompra.setInt(2, idPedido);
-            pstmtCompra.setInt(3, Precio);
-            pstmtCompra.setInt(4, Total);
-            pstmtCompra.setInt(5, Cantidad);
-            pstmtCompra.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    /*public void eliminarTodo() {
-        try {
-
-            String queryDetalle = "DELETE FROM DetallePedido";
-            Statement stmtDetalle = Conexion.conexion.createStatement();
-            stmtDetalle.executeUpdate(queryDetalle);
-
-            // Luego, elimina los registros de la tabla "Pedido"
-            String queryPedido = "DELETE FROM Pedido";
-            Statement stmtPedido = Conexion.conexion.createStatement();
-            stmtPedido.executeUpdate(queryPedido);
-
-            String queryPlatillo = "DELETE FROM Platillo";
-            Statement stmtPlatillo = Conexion.conexion.createStatement();
-            stmtPlatillo.executeUpdate(queryPlatillo);
-
-            String queryCategorias = "DELETE FROM Categorias";
-            Statement stmtCategorias = Conexion.conexion.createStatement();
-            stmtCategorias.executeUpdate(queryCategorias);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    public ObservableList<RestaurateDAO> LISTARPRODUCTOS(){
-        ObservableList<RestaurateDAO> ListTaq = FXCollections.observableArrayList();
-        RestaurateDAO objC;
-        try{
-            String query = "SELECT * FROM platillo";
-            Statement stmt = Conexion.conexion.createStatement();
-            ResultSet res = stmt.executeQuery(query);
-            while(res.next()){
-                objC = new RestaurateDAO();
-                objC.setIDplatillo(res.getInt("IDplatillo"));
-                objC.setNombreplatillo(res.getString("nombre"));
-                ListTaq.add(objC);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return ListTaq;
+        return ListPLA;
     }
 
     /*public ObservableList<RestaurateDAO> LISTARCATEGORIAS(){
@@ -469,24 +408,18 @@ public class RestaurateDAO {
         }
     }*/
 
-    public void ELIMINARPLATILLOTODO(){
-        try{
-            String query = "DELETE FROM platillo WHERE IDplatillo = "+this.IDplatillo;
-            Statement stmt = Conexion.conexion.createStatement();
-            stmt.executeUpdate(query);
-        }catch (Exception e){
+    public void eliminarTodo() {
+        try {
+            String queryPlatillo = "DELETE FROM platillo WHERE IDplatillo = "+this.IDplatillo;
+            Statement stmtPlatillo = Conexion.conexion.createStatement();
+            stmtPlatillo.executeUpdate(queryPlatillo);
+
+            String queryCategorias = "DELETE FROM categoria WHERE idCategoria = "+this.idCategoria;
+            Statement stmtCategorias = Conexion.conexion.createStatement();
+            stmtCategorias.executeUpdate(queryCategorias);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public void ELIMINARCATEGORIANUEVA(){
-        try{
-            String query = "DELETE FROM categoria WHERE idCategoria = "+this.idCategoria;
-            Statement stmt = Conexion.conexion.createStatement();
-            stmt.executeUpdate(query);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
 }

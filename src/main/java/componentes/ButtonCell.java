@@ -33,7 +33,9 @@ public class ButtonCell extends TableCell<RestaurateDAO,String> {
 
             Optional<ButtonType> result = alert.showAndWait();
             if(result.get() == ButtonType.OK){
-
+                objRes.eliminarTodo();
+                tbvRestaurante.setItems(objRes.LISTARPlatillo());
+                tbvRestaurante.refresh();
             }
         }
     }
